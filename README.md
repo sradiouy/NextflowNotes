@@ -6,7 +6,9 @@ This is a nextflow tutorial to create a simple pipeline. Also I will add notes a
 
 First I wil clone these github repository to the local server: 
 
-  git clone https://github.com/sradiouy/NextflowTutorial.git
+```bash
+  git clone https://github.com/sradiouy/NextflowNotes.git
+```
 
 ## Step 2 
 
