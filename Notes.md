@@ -1,4 +1,8 @@
-# Running on Background
+# Notes
+
+Lesson learned while using nextflow
+
+## Running on Background
 
 Is important to note that using the & to send to background doesn't work well. Also the nohup command dosent play well with Nexflow.
 
