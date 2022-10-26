@@ -41,8 +41,10 @@ Then I will add a few lines to the main.nf to do really simple stuff:
 
 The output will be: 
 
->N E X T F L O W  ~  version 22.04.4 \n
->Launching `main.nf` [trusting_sinoussi] DSL2 - revision: 3f4be19378 \n
->These is a pipeline created by sradio who is a bioinformatician \n
+>N E X T F L O W  ~  version 22.04.4
+>
+>Launching `main.nf` [trusting_sinoussi] DSL2 - revision: 3f4be19378
+>
+>These is a pipeline created by sradio who is a bioinformatician
 
 
