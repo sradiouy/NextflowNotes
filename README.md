@@ -49,8 +49,8 @@ The output will be:
 
 Is important to note that the parameteres (user and jobid) are of two types: 
 
-- Internal: need to be defined in the scirpt body
-- External: could have a default value in the body of the script, but the value could change when the pipeline is executed using the double hyphen. As an example in these case:
+- Internal: need to be defined in the scirpt body (*user*)
+- External: could have a default value in the body of the script, but the value could change when the pipeline is executed using the double hyphen (*jobid*). As an example in these case:
 
 ```bash
 nextflow run main.nf --jobid "manager"
