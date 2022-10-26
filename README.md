@@ -25,7 +25,7 @@ The nextflow.config file contains default parameters to use in the nextflow pipe
 
 Modification of the main.nf to create a basic program.
 
-Every nextflow main.nf need to have these line:
+Every nextflow main.nf need to have this line:
 > #! /usr/bin/env nextflow
 
 
