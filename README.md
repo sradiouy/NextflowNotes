@@ -28,5 +28,11 @@ Modification of the main.nf to create a basic program.
 Every nextflow main.nf need to have this line:
 > #! /usr/bin/env nextflow
 
-
+Then I will add a few lines to the main.nf to do really simple stuff:
+> #! /usr/bin/env nextflow
+>
+> user="sradio"
+> params.jobid ="bioinformatician"
+>
+> println "These is a pipeline created by $user who is a  $params.jobid"
 
