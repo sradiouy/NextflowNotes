@@ -19,8 +19,9 @@ It doesn’t have to be named main.nf but that is standard practice (**highly re
 
 The nextflow.config file contains default parameters to use in the nextflow pipeline
 
+```bash
   touch main.nf nextflow.config
-
+```
 ## Step 3 
 
 Modification of the main.nf to create a basic program.
