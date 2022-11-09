@@ -59,3 +59,10 @@ nextflow run main.nf --jobid "manager"
 ```
 
 
+
+## Extra Notes
+
+### Docker 
+
+I usually follow this instruction to install docker in ubuntu: https://docs.docker.com/engine/install/ubuntu/
+
