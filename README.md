@@ -58,7 +58,33 @@ Is important to note that the parameteres (user and jobid) are of two types:
 nextflow run main.nf --jobid "manager"
 ```
 
+## Nextflow Concept
 
+### Processes
+
+In Nextflow, a process is a fundamental unit of computation that executes a user-defined script. Typically, a Nextflow process is defined using the process keyword, followed by a unique name for the process and a code block containing the script to be executed. This script can be written in any language, and it can perform a wide range of tasks, such as data analysis, data transformation, or data visualization. Once a process is defined, it can be executed within a Nextflow pipeline, which is a series of interconnected processes that work together to achieve a common goal. In this way, Nextflow enables users to create complex, reproducible, and scalable computational pipelines using a simple and intuitive syntax.
+
+A process may contain any of the following definition blocks: directives, inputs, outputs, when clause, and the process script. The syntax is defined as follows:
+
+```bash
+process < name > {
+
+  [ directives ]
+
+  input:
+    < process inputs >
+
+  output:
+    < process outputs >
+
+  when:
+    < condition >
+
+  [script|shell|exec]:
+    < user script to be executed >
+
+}
+```
 
 ## Extra Notes
 
