@@ -85,6 +85,46 @@ process < name > {
 
 }
 ```
+For example:
+
+```nextflow
+// Define the process
+process square {
+
+  // Define the input parameters
+  input:
+    val n from: 'numbers.txt'
+    val log_level from: 'log_level.txt'
+
+  // Define the output files
+  output:
+    file 'results.txt' into: result_files
+
+  // Define a conditional execution clause
+  when:
+    log_level == 'verbose'
+
+  // Define the process directives
+  directives {
+    memory '2.5 GB'
+    cpus 4
+    container 'python:3.7'
+  }
+
+  // Define the script to be executed
+  script:
+    // Compute the square of the input number
+    n_square = n * n
+
+    // Save the result to a file
+    result_file = 'result_' + n + '.txt'
+    writeFile file: result_file, text: n_square
+
+    // Print the result to the console
+    println n_square
+}
+```
+
 
 ## Extra Notes
 
