@@ -153,6 +153,8 @@ process foo {
 }
 ```
 
+**The above examples will request 4 GPUs of type nvidia-tesla-k80.**
+
 ## Extra Notes
 
 ### Docker 
