@@ -125,6 +125,33 @@ process square {
 }
 ```
 
+Now I will expand a little bit en each of the blocks:
+
+#### Directives
+
+Directives are optional settings that affect the execution of the current process.
+
+They must be entered at the top of the process body, before any other declaration blocks (input, output, etc), and have the following syntax:
+
+```nextflow
+name value [, value2 [,..]]
+```
+Some directives are generally available to all processes, while others depend on the executor currently defined.
+
+##### accelerator
+
+The accelerator directive allows you to specify the hardware accelerator requirement for the task execution e.g. GPU processor. For example:
+
+```nextflow
+process foo {
+    accelerator 4, type: 'nvidia-tesla-k80'
+
+    script:
+    """
+    your_gpu_enabled --command --line
+    """
+}
+```
 
 ## Extra Notes
 
