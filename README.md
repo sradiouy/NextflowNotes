@@ -125,7 +125,7 @@ process square {
 }
 ```
 
-Now I will expand a little bit en each of the blocks:
+Now I will expand a little bit on each of the blocks:
 
 #### Directives
 
@@ -154,6 +154,95 @@ process foo {
 ```
 
 **The above examples will request 4 GPUs of type nvidia-tesla-k80.**
+
+##### afterScript & beforeScript
+
+The afterScript directive allows you to execute a custom (Bash) snippet immediately after/before the main process has run. 
+
+**When combined with the container directive, the afterScript/beforeScript will be executed outside the specified container. In other words, the afterScript/beforeScript is always executed in the host environment.**
+
+##### conda
+
+The conda directive allows for the definition of the process dependencies using the Conda package manager.
+
+Nextflow *automatically sets up an environment* for the given package names listed by in the conda directive. For example:
+
+```nextflow
+process foo {
+  conda 'bwa=0.7.15'
+
+  '''
+  your_command --here
+  '''
+}
+```
+
+Multiple packages can be specified separating them with a *blank space* eg. bwa=0.7.15 fastqc=0.11.5. The name of the channel from where a specific package needs to be downloaded can be specified using the usual Conda notation i.e. prefixing the package with the channel name as shown here *bioconda::bwa=0.7.15.*
+
+##### container
+
+The container directive allows you to execute the process script in a Docker container.
+
+It requires the Docker daemon to be running in machine where the pipeline is executed, i.e. the local machine when using the local executor or the cluster nodes when the pipeline is deployed through a grid executor.
+
+For example:
+
+```nextflow
+process runThisInDocker {
+  container 'dockerbox:tag'
+
+  """
+  <your holy script here>
+  """
+}
+```
+
+Simply replace in the above script dockerbox:tag with the name of the Docker image you want to use.
+
+##### cpus
+
+The cpus directive allows you to define the number of (logical) CPU required by the process’ task.
+
+##### errorStrategy
+
+The errorStrategy directive allows you to define how an error condition is managed by the process. By default when an error status is returned by the executed script, the process stops immediately. This in turn forces the entire pipeline to terminate.
+
+__List of available error strategies:__
+
+- terminate: Terminates the execution as soon as an error condition is reported. Pending jobs are killed (default)
+
+- finish: Initiates an orderly pipeline shutdown when an error condition is raised, waiting the completion of any submitted job.
+
+- ignore: Ignores processes execution errors.
+
+- retry:Re-submit for execution a process returning an error condition.
+
+When setting the errorStrategy directive to ignore the process doesn’t stop on an error condition, it just reports a message notifying you of the error event.
+
+For example:
+
+```nextflow
+process ignoreAnyError {
+  errorStrategy 'ignore'
+
+  script:
+  <your command string here>
+}
+```
+
+The retry error strategy allows you to re-submit for execution a process returning an error condition. For example:
+
+```nextflow
+process retryIfFail {
+  errorStrategy 'retry'
+
+  script:
+  <your command string here>
+}
+```
+
+The number of times a failing process is re-executed is defined by the *maxRetries* and *maxErrors* directives.
+
 
 ## Extra Notes
 
