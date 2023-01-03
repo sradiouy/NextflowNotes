@@ -127,35 +127,6 @@ process square {
 
 Now I will expand a little bit on each of the blocks:
 
-### Inputs
-
-The input block allows you to define the input channels of a process, similar to function arguments. A process may have at most one input block, and it must contain at least one input.
-
-The input block follows the syntax shown below:
-
-```nextflow
-input:
-  <input qualifier> <input name>
- ```
- 
-An input definition consists of a qualifier and a name. The input qualifier defines the type of data to be received. This information is used by Nextflow to apply the semantic rules associated with each qualifier, and handle it properly depending on the target execution platform (grid, cloud, etc).
-
-When a process is invoked in a workflow block, it must be provided a channel for each channel in the process input block, similar to calling a function with specific arguments. The examples provided in the following sections demonstrate how a process is invoked with input channels.
-
-The available input qualifiers are listed in the following table:
-
-- val: Access the input value by name in the process script.
-
-- path: Handle the input value as a path, staging the file properly in the execution context.
-
-- env:Use the input value to set an environment variable in the process script.
-
-- stdin: Forward the input value to the process stdin special file.
-
-- tuple: Handle a group of input values having any of the above qualifiers.
-
-- each: Execute the process for each element in the input collection.
-
 #### Directives
 
 Directives are optional settings that affect the execution of the current process.
@@ -326,6 +297,34 @@ The following values can be used (there are more, but I select the most useful f
 - slurm: The process is executed using the SLURM job scheduler.
 
 
+### Inputs
+
+The input block allows you to define the input channels of a process, similar to function arguments. A process may have at most one input block, and it must contain at least one input.
+
+The input block follows the syntax shown below:
+
+```nextflow
+input:
+  <input qualifier> <input name>
+ ```
+ 
+An input definition consists of a qualifier and a name. The input qualifier defines the type of data to be received. This information is used by Nextflow to apply the semantic rules associated with each qualifier, and handle it properly depending on the target execution platform (grid, cloud, etc).
+
+When a process is invoked in a workflow block, it must be provided a channel for each channel in the process input block, similar to calling a function with specific arguments. The examples provided in the following sections demonstrate how a process is invoked with input channels.
+
+The available input qualifiers are listed in the following table:
+
+- val: Access the input value by name in the process script.
+
+- path: Handle the input value as a path, staging the file properly in the execution context.
+
+- env:Use the input value to set an environment variable in the process script.
+
+- stdin: Forward the input value to the process stdin special file.
+
+- tuple: Handle a group of input values having any of the above qualifiers.
+
+- each: Execute the process for each element in the input collection.
 
 
 ## Extra Notes
