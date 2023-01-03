@@ -243,6 +243,61 @@ process retryIfFail {
 
 The number of times a failing process is re-executed is defined by the *maxRetries* and *maxErrors* directives.
 
+#### memory
+
+The memory directive allows you to define how much memory the process is allowed to use. For example: memory '2 GB' 
+
+#### module
+
+Environment Modules is a package manager that allows you to dynamically configure your execution environment and easily switch between multiple versions of the same software tool. If it is available in your system you can use it with Nextflow in order to configure the processes execution environment in your pipeline.
+
+In a process definition you can use the module directive to load a specific module version to be used in the process execution environment. For example:
+
+```nextflow
+process basicExample {
+  module 'ncbi-blast/2.2.27'
+
+  """
+  blastp -query <etc..>
+  """
+}
+```
+
+You can repeat the module directive for each module you need to load. Alternatively multiple modules can be specified in a single module directive by separating all the module names by using a : (colon) character as shown below:
+
+```nextflow
+ process manyModules {
+
+   module 'ncbi-blast/2.2.27:t_coffee/10.0:clustalw/2.1'
+
+   """
+   blastp -query <etc..>
+   """
+}
+```
+
+#### executor
+
+The executor defines the underlying system where processes are executed. *By default a process uses the executor defined globally in the nextflow.config file.*
+
+The executor directive allows you to configure what executor has to be used by the process, overriding the default configuration. 
+
+The following values can be used (there are more, but I select the most useful for us):
+
+- awsbatch: The process is executed using the AWS Batch service.
+
+- azurebatch: The process is executed using the Azure Batch service.
+
+- google-lifesciences: The process is executed using the Google Genomics Pipelines service.
+
+- k8s: The process is executed using the Kubernetes cluster.
+
+- local: The process is executed in the computer where Nextflow is launched.
+
+- slurm: The process is executed using the SLURM job scheduler.
+
+
+
 
 ## Extra Notes
 
